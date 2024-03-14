@@ -97,7 +97,7 @@ app.post("/v/:user/?:checkpoint", (req, res)=>{
     const resposta = req.body.resposta;
     const checkPoint = req.params.checkpoint
     const user = req.params.user
-    var next = parseInt(checkPoint);
+    var next = parseInt(checkPoint) + 1;
     
 
 
@@ -106,16 +106,16 @@ app.post("/v/:user/?:checkpoint", (req, res)=>{
     })
     .then((resp)=>{
         if(resp.answers === resposta){
-            res.send("resposta correta")
             Users.update(
-                {checkpoint: next + 1},
+                {checkpoint: next},
                 {where: {id: user},}
             )
+            res.redirect(`/project-enigmatic/${user}/${next}`);
         }
         else{
             res.send("ERRADO")
         }
-      
+        
     })
     .catch()
 })
