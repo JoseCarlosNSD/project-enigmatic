@@ -63,8 +63,8 @@ app.post("/login-save", (req, res)=>{
     })
     .then((dadoRetornado)=>{
         if(dadoRetornado){
-            let checkPoint = dadoRetornado.checkpoint;
-            res.render("/")
+            var checkPoint = dadoRetornado.checkpoint;
+            res.redirect(`/project-enigmatic/${checkPoint}`)
         
             
         }
@@ -73,12 +73,33 @@ app.post("/login-save", (req, res)=>{
         }
     })
     .catch();
-
-})
-app.get("/project-enigmatic/:checkpoint", (req, res)=>{
     
 })
+app.get("/project-enigmatic/:checkpoint", (req, res)=>{
+    const checkPoint = req.params.checkpoint
+        Respostas.findOne({
+            where:{
+                id: checkPoint, 
+            }
+        })
+        .then((pergunta)=>{
+            res.render(`./levels/${checkPoint}`, {pergunta})
+        })
+    
+
+})
+app.post("/?/:checkpoint", (req, res)=>{
+    const resposta = req.body.resposta;
+    const checkPoint = req.params.checkpoint
+
+    Respostas.findOne({
+        where: {id: checkPoint}
+    })
+    .then(()=>{
+        
+    })
+})
 
 
 
-app.listen(5000, ()=>{console.log("SERVER RUNNING...")})
+app.listen(5100, ()=>{console.log("SERVER RUNNING...")})
