@@ -64,7 +64,8 @@ app.post("/login-save", (req, res)=>{
     .then((dadoRetornado)=>{
         if(dadoRetornado){
             var checkPoint = dadoRetornado.checkpoint;
-            res.redirect(`/project-enigmatic/${checkPoint}`)
+            var id = dadoRetornado.id
+            res.redirect(`/project-enigmatic/${id}/${checkPoint}`)
         
             
         }
@@ -75,23 +76,30 @@ app.post("/login-save", (req, res)=>{
     .catch();
     
 })
-app.get("/project-enigmatic/:checkpoint", (req, res)=>{
+app.get("/project-enigmatic/:user/:checkpoint", (req, res)=>{
     const checkPoint = req.params.checkpoint
+    const user = req.params.user
+
+    
         Respostas.findOne({
             where:{
                 id: checkPoint, 
             }
         })
         .then((pergunta)=>{
-            res.render(`./levels/${checkPoint}`, {pergunta})
+            res.render(`./levels/${checkPoint}`, {pergunta, user} )
         })
     
 
 })
-app.post("/v/?:checkpoint", (req, res)=>{
+app.post("/v/:user/?:checkpoint", (req, res)=>{
 
     const resposta = req.body.resposta;
     const checkPoint = req.params.checkpoint
+    const user = req.params.user
+    var next = parseInt(checkPoint);
+    
+
 
     Respostas.findOne({
         where: {id: checkPoint}
@@ -99,6 +107,10 @@ app.post("/v/?:checkpoint", (req, res)=>{
     .then((resp)=>{
         if(resp.answers === resposta){
             res.send("resposta correta")
+            Users.update(
+                {checkpoint: next + 1},
+                {where: {id: user},}
+            )
         }
         else{
             res.send("ERRADO")

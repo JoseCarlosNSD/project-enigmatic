@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="POST" action= <%= '/v/' + pergunta.id %>>
+    <form method="POST" action= <%= '/v/' + user + pergunta.id %>>
         <p> <%= pergunta.asks %> </p>
         <input type="text" name="resposta" placeholder="Digite sua resposta...">
         <button>Enviar</button>
