@@ -88,17 +88,26 @@ app.get("/project-enigmatic/:checkpoint", (req, res)=>{
     
 
 })
-app.post("/?/:checkpoint", (req, res)=>{
+app.post("/v/?:checkpoint", (req, res)=>{
+
     const resposta = req.body.resposta;
     const checkPoint = req.params.checkpoint
 
     Respostas.findOne({
         where: {id: checkPoint}
     })
-    .then(()=>{
-        
+    .then((resp)=>{
+        if(resp.answers === resposta){
+            res.send("resposta correta")
+        }
+        else{
+            res.send("ERRADO")
+        }
+      
     })
+    .catch()
 })
+  
 
 
 

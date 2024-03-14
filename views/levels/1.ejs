@@ -6,10 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="POST" action=``>
+    <form method="POST" action= <%= '/v/' + pergunta.id %>>
         <p> <%= pergunta.asks %> </p>
         <input type="text" name="resposta" placeholder="Digite sua resposta...">
-        <button type="submit">Enviar</button>
+        <button>Enviar</button>
     </form>
 </body>
 </html>
