@@ -4,15 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Project Enigmatic</title>
+    <link rel="shortcut icon" href="/source/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/center.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/inputs.css">
 </head>
 <body class="container">  
-    <button><a href="/">Voltar</a></button>
-   <form method="POST" action="/signin-save">
-        <h1>Cadastre-se</h1>
-        <input type="text" name="user" id="" placeholder="Usuário">
-        <input type="password" name="password" id="" placeholder="Senha">
-        <button type="submit">Cadastrar</button>
-        <a href="/login">ou faça Login</a>
+    <a  href="/"><button class="voltar"><i class="material-icons">subdirectory_arrow_left</i></button></a>
+    <div class="container-video"></div>
+    <div class="fade"></div>
+   <form class="container-main" method="POST" action="/signin-save">
+        <h1 class="h1-singin">Crie sua conta</h1>
+        <input class="input-auth" type="text" name="user" id="" placeholder="Usuário">
+        <input class="input-auth" type="password" name="password" id="" placeholder="Senha">
+        <button class="button" type="submit">Criar</button>
+        <a class="a" href="/login">ou faça Login</a>
    </form>
 </body>
 </html>

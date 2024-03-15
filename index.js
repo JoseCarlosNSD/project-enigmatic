@@ -7,6 +7,8 @@ const Respostas = require("./database/respostas");
 const Users = require("./database/users")
 const connection = require("./database/database")
 
+app.use(express.static('public'));
+
 connection.authenticate().then(()=>{
     console.log("Banco de dados conectado!")
 })
@@ -76,25 +78,37 @@ app.post("/login-save", (req, res)=>{
     .catch();
     
 })
-app.get("/project-enigmatic/:user/:checkpoint", (req, res)=>{
+app.get("/project-enigmatic/:user/?:checkpoint", (req, res)=>{
     const checkPoint = req.params.checkpoint
     const user = req.params.user
+    Users.findOne({
+        where: {id: user}
+    })
+    .then((user)=>{
+        if(user.checkpoint < checkPoint){
+            res.send("Você nao pode fazer isso")
+        }
+        else{
+            Respostas.findOne({
+                where:{
+                    id: checkPoint, 
+                }
+            })
+            .then((pergunta)=>{
+                res.render(`./levels/${checkPoint}`, {pergunta, user} )
+            })
+        }
+    })
+    
 
     
-        Respostas.findOne({
-            where:{
-                id: checkPoint, 
-            }
-        })
-        .then((pergunta)=>{
-            res.render(`./levels/${checkPoint}`, {pergunta, user} )
-        })
+       
     
 
 })
 app.post("/v/:user/?:checkpoint", (req, res)=>{
 
-    const resposta = req.body.resposta;
+    const respostas = req.body.resposta;
     const checkPoint = req.params.checkpoint
     const user = req.params.user
     var next = parseInt(checkPoint) + 1;
@@ -105,7 +119,8 @@ app.post("/v/:user/?:checkpoint", (req, res)=>{
         where: {id: checkPoint}
     })
     .then((resp)=>{
-        if(resp.answers === resposta){
+        
+        if(resp.answers === respostas){
             Users.update(
                 {checkpoint: next},
                 {where: {id: user},}
