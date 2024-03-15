@@ -110,8 +110,9 @@ app.post("/v/:user/?:checkpoint", (req, res)=>{
 
     const respostas = req.body.resposta;
     const checkPoint = req.params.checkpoint
-    const user = req.params.user
-    var next = parseInt(checkPoint) + 1;
+    const check_point = req.params.checkpoint
+    const user = req.params.user;
+    var next = parseInt(check_point) + 1;
     
 
 
