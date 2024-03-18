@@ -73,17 +73,37 @@ body{
 }
 .h1-home{
     margin: 0;
-    font-size: 4rem;
+    font-size: 4.7rem;
 }
+@media screen and (max-width: 410px){
+  .h1-home{
+    font-size: 4rem;
+  }
+  .footer{
+    padding-bottom: 50px;
+  }
+}
+@media screen and (max-width: 350px){
+  .h1-home{
+    font-size: 3rem;
+  }
+  .footer{
+    font-size: 0.8rem;
+  }
+  .footer{
+    padding-bottom: 50px;
+  }
+}
+
 
 .container-buttons{
     
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     margin: 20px;
 }
 button{
-    font-size: 1rem;
+    font-size: 1.05rem;
     cursor: pointer;
     font-family: "Cutive Mono", monospace;
     color: white;

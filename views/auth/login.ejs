@@ -4,16 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Project Enigmatic</title>
+    <link rel="shortcut icon" href="/source/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/center.css">
+
+    <%- include("../partials/bootstrap.ejs")%>
+    
+    <link rel="stylesheet" href="css/inputs.css">
 </head>
 <body class="container">
-    <button><a href="/">Voltar</a></button>
-    <form method="POST" action="/login-save">
-        <h1>Login</h1>
-        <input type="text" name="userLogin" id="" placeholder="Usuário">
-        <input type="password" name="passwordLogin" id="" placeholder="Senha">
-        <button type="submit">Entrar</button>
-        <a href="/signin">Cadastre-se</a>
+    <a href="/"><button class="voltar"><i class="bi bi-house-door-fill icon"></i></button></a>
+
+    <div class="container-video"></div>
+    <div class="fade"></div>
+
+    <form class="container-main" method="POST" action="/login-save">
+        <h1 class="h1-auth">Login</h1>
+        <input required class="input-auth" type="text" name="userLogin" id="" placeholder="Usuário">
+        <input required class="input-auth" type="password" name="passwordLogin" id="" placeholder="Senha">
+        <button class="button" type="submit">Entrar</button>
+        <label  class="label" for="">ou</label>
+        <a class="a" href="/signin">Crie sua conta</a>
    </form>
+   <%- include("../partials/footer.ejs")%>
     
 </body>
 </html>

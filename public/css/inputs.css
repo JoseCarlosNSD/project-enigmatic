@@ -1,16 +1,43 @@
+
+.h1-auth{
+    margin-bottom: 25px;
+}
 .input-auth{
-    padding: 10px;
+    width: 190px;
+    font-size: 1rem;
+    padding: 5px;
+    padding-left: 10px;
+    margin: 10px;
     padding-bottom: 5px;
+    font-family: 'Courier New', Courier, monospace;
     background-color: transparent;
-    color: white;
+    color: rgb(255, 255, 255);
     outline: 0;
     border: none;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    
+    
     
 }
 .input-auth::placeholder{
-   color: white;
+   color: rgb(255, 255, 255);
     
+}
+.button, a:active {
+    -webkit-tap-highlight-color: transparent; /* Para navegadores baseados em WebKit (como Chrome e Safari) */
+    -tap-highlight-color: transparent; /* Para outros navegadores */
+    outline: none; /* Remover a borda ao clicar */
+}
+/* Cor de fundo transparente do autocomplete */
+/* Cor de fundo transparente do autocomplete */
+input:-webkit-autofill {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Cor do texto transparente do autocomplete */
+input:-webkit-autofill {
+    -webkit-text-fill-color: rgb(255, 255, 255) !important;
 }
 .button{
     font-size: 1rem;
@@ -25,28 +52,64 @@
     background-color: rgb(255, 208, 0);
     margin: 10px;
     padding: 7px;
-    width: 170px;
+    width: 150px;
     border-radius: 10vh;
-    margin: 15px;
-    padding: 10px;
-    width: 200px;
-    border-radius: 10vh;
+
 }
 button:hover{
     transition: 0.2s ease;
     transform: scale(1.05);
 }
+.label{
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
 .a{
     text-decoration: none;
     color: white;
 }
+.icon{
+    font-size: 1.75rem;
+}
 .voltar{
+    margin: 10px;
     border: none;
     text-decoration: none;
-    color: white;
-    width: 50px;
+    color: rgb(255, 255, 255);
+    
     cursor: pointer;
     background-color:transparent;
     position: relative;
     z-index: 30;
 }
+.footer{
+    margin-bottom: 7vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 20 ;
+    font-family: 'Cutive mono';
+    color: rgb(94, 94, 94);
+    position: relative; 
+
+    
+}
+@media screen and (max-width: 410px){
+    .h1-home{
+      font-size: 4rem;
+    }
+    .footer{
+      padding-bottom: 50px;
+    }
+  }
+  @media screen and (max-width: 350px){
+    .h1-home{
+      font-size: 3rem;
+    }
+    .footer{
+      font-size: 0.8rem;
+    }
+    .footer{
+      padding-bottom: 50px;
+    }
+  }

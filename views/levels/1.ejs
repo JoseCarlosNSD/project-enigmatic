@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("../partials/bootstrap.ejs")%>
     <title>Document</title>
 </head>
 <body>
-    <form method="POST" action="<%= '/v/' + user.id +'/'+ pergunta.id %>">
+    <form method="POST" action="<%= '/v/' + returnedUser.id +'/'+ pergunta.id %>">
         <p> <%= pergunta.asks %> </p>
         <input type="text" name="resposta" placeholder="Digite sua resposta...">
         <button type="submit">Enviar</button>

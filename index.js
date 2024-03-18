@@ -7,6 +7,10 @@ const Respostas = require("./database/respostas");
 const Users = require("./database/users")
 const connection = require("./database/database")
 
+
+
+
+
 app.use(express.static('public'));
 
 connection.authenticate().then(()=>{
@@ -32,42 +36,50 @@ app.get("/login", (req, res)=>{
 app.get("/signin", (req, res)=>{
     res.render("./auth/signin");   
 })
+
+
 app.post("/signin-save", (req, res)=>{
     var usuario = req.body.user;
     var senha = req.body.password;
+        // Users.findOne({
+        //     where: {user: usuario}
+        // }).then((dadoRetornado)=>{
+        //     if(dadoRetornado){
+        //         res.send("usuário já existe");
+        //     }
+        //     else{
+        //         Users.create({
+        //             user: usuario,
+        //             password: senha,
+        //             checkpoint: 1,
+        //         }).then(()=>{res.send("Usuário Criado")})
+        //         .catch();
+        //     }
+        // })  
+        // .catch() 
+    
 
-    Users.findOne({
-        where: {user: usuario}
-    }).then((dadoRetornado)=>{
-        if(dadoRetornado){
-            res.send("usuário já existe");
-        }
-        else{
-            Users.create({
-                user: usuario,
-                password: senha,
-                checkpoint: 1,
-            }).then(()=>{res.send("Usuário Criado")})
-            .catch();
-        }
-    })  
-    .catch() 
+  
 })
+
 app.post("/login-save", (req, res)=>{
     var usuario = req.body.userLogin;
     var senha = req.body.passwordLogin;
 
     Users.findOne({
+
         where:{
             user: usuario,
             password: senha,
         }
     })
     .then((dadoRetornado)=>{
+        
         if(dadoRetornado){
+            app.locals.user = dadoRetornado.id;
             var checkPoint = dadoRetornado.checkpoint;
-            var id = dadoRetornado.id
-            res.redirect(`/project-enigmatic/${id}/${checkPoint}`)
+
+            res.redirect(`/project-enigmatic/${app.locals.user}/${checkPoint}`)
         
             
         }
@@ -84,8 +96,8 @@ app.get("/project-enigmatic/:user/?:checkpoint", (req, res)=>{
     Users.findOne({
         where: {id: user}
     })
-    .then((user)=>{
-        if(user.checkpoint < checkPoint){
+    .then((returnedUser)=>{
+        if(returnedUser.checkpoint < checkPoint || user != app.locals.user){
             res.send("Você nao pode fazer isso")
         }
         else{
@@ -95,7 +107,7 @@ app.get("/project-enigmatic/:user/?:checkpoint", (req, res)=>{
                 }
             })
             .then((pergunta)=>{
-                res.render(`./levels/${checkPoint}`, {pergunta, user} )
+                res.render(`./levels/${checkPoint}`, {pergunta, returnedUser} )
             })
         }
     })
