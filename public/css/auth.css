@@ -1,8 +1,12 @@
 /* AVISOS */
+body{
+    background-color: red!important;
+}
 .aviso{
     color: rgb(255, 41, 41);
     opacity: 1;
 }
 .input-erro{
+    background-color:red!important;
     border-bottom: 1px solid rgb(253, 42, 42);
 }

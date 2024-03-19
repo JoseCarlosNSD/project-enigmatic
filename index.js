@@ -44,9 +44,20 @@ app.get("/signin", (req, res)=>{
 app.post("/signin-save", (req, res)=>{
     var usuario = req.body.user;
     var senha = req.body.password;
+    var erro = false;
+
+    if(usuario.length < 4){
+        erro = true
+        res.render("./auth/signin", {erro})
+        console.log("nome pequeno")
+    }
+    else{
+        console.log("nome aceito")
+        res.render("./auth/login", {erro})
+    }
 
 
-    console.log(auth.authFrontEnd);
+    
         // Users.findOne({
         //     where: {user: usuario}
         // }).then((dadoRetornado)=>{

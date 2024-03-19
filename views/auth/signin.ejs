@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Conta - Project Enigmatic</title>
     <link rel="shortcut icon" href="/source/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/center.css">
-
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/inputs.css">
     <%- include("../partials/bootstrap.ejs")%>
     
-    <link rel="stylesheet" href="css/inputs.css">
+    
 </head>
 <body class="container">  
     <a  href="/"><button class="voltar"><i class="bi bi-house-door-fill icon"></i></button></a>
@@ -20,7 +22,7 @@
    <form id="form" class="container-main" method="POST" action="/signin-save" >
         <h1 class="h1-auth">Crie sua conta</h1>
         <p style="opacity: 0;" >O usuário deve ter ao menos 4 caracteres.</p>
-        <input required  class="input-auth <%= erroNomeUsuario ? 'invalid' : '' %>" type="text" name="user" id="user" placeholder="Usuário">
+        <input required  class="<%= erro ? "input-auth input-erro" : "input-auth" %>"  type="text" name="user" id="user" placeholder="Usuário">
         <input required class="input-auth" type="password" name="password" id="password" placeholder="Senha">
         <button id="submit" class="button">Criar</button>
         <p class="label">ou</p>

@@ -27,5 +27,10 @@ CSS
 .invalid {
     color: red;
 }
+
+
+<!-- <%= erroNomeUsuario ? 'invalid' : '' %>" -->
+
+
 AI-generated code. Review and use carefully. More info on FAQ.
 Dessa forma, quando o nome de usuário for inválido, o campo de entrada será exibido em vermelho, indicando um possível erro para o usuário. Lembre-se de adaptar essas etapas ao seu código específico e à estrutura do seu aplicativo Express. Espero que isso ajude! 🚀
