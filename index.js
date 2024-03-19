@@ -1,7 +1,10 @@
+
 const express = require("express");
 const app = express();
 
 const bodyParser = require("body-parser");
+
+const auth = require("./public/scripts/auth")
 
 const Respostas = require("./database/respostas");
 const Users = require("./database/users")
@@ -41,6 +44,9 @@ app.get("/signin", (req, res)=>{
 app.post("/signin-save", (req, res)=>{
     var usuario = req.body.user;
     var senha = req.body.password;
+
+
+    console.log(auth.authFrontEnd);
         // Users.findOne({
         //     where: {user: usuario}
         // }).then((dadoRetornado)=>{

@@ -17,10 +17,10 @@
     <div class="container-video"></div>
     <div class="fade"></div>
     
-   <form id="form" class="container-main" >
+   <form id="form" class="container-main" method="POST" action="/signin-save" >
         <h1 class="h1-auth">Crie sua conta</h1>
         <p style="opacity: 0;" >O usuário deve ter ao menos 4 caracteres.</p>
-        <input required  class="input-auth" type="text" name="user" id="user" placeholder="Usuário">
+        <input required  class="input-auth <%= erroNomeUsuario ? 'invalid' : '' %>" type="text" name="user" id="user" placeholder="Usuário">
         <input required class="input-auth" type="password" name="password" id="password" placeholder="Senha">
         <button id="submit" class="button">Criar</button>
         <p class="label">ou</p>
