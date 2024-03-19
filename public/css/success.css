@@ -121,6 +121,17 @@ button:hover{
     transition: 0.2s ease;
     transform: scale(1.05);
 }
+.voltar{
+  margin: 10px;
+  border: none;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  width: 0px;
+  cursor: pointer;
+  background-color:transparent;
+  position: relative;
+  z-index: 30;
+}
 .footer{
     margin-bottom: 7vh;
     width: 100%;

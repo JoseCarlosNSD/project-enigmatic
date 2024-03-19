@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Project Enigmatic</title>
     <link rel="shortcut icon" href="/source/favicon.png" type="image/x-icon">
+   
     <link rel="stylesheet" href="css/center.css">
+    <link rel="stylesheet" href="css/auth.css">
+    
 
     <%- include("../partials/bootstrap.ejs")%>
     
@@ -19,6 +22,7 @@
 
     <form class="container-main" method="POST" action="/login-save">
         <h1 class="h1-auth">Login</h1>
+        <p  style="opacity: 0;" class="<%= erro ? "aviso" : "p-auth" %>" >Usuário ou senha incorreto.</p>
         <input required class="input-auth" type="text" name="userLogin" id="" placeholder="Usuário">
         <input required class="input-auth" type="password" name="passwordLogin" id="" placeholder="Senha">
         <button class="button" type="submit">Entrar</button>

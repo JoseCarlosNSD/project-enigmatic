@@ -1,10 +1,16 @@
 /* AVISOS */
-body{
-    background-color: red!important;
+
+.p-auth{
+    font-size: 0.7rem;
+    background-color: rgba(255, 8, 0, 0.555);
+    padding: 1px;
+    
 }
 .aviso{
-    color: rgb(255, 41, 41);
-    opacity: 1;
+    font-size: 0.7rem;
+    background-color: rgba(255, 8, 0, 0.555);
+    padding: 1px;
+    opacity: 1!important;
 }
 .input-erro{
     background-color:red!important;

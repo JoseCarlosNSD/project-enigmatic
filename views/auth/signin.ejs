@@ -21,14 +21,16 @@
     
    <form id="form" class="container-main" method="POST" action="/signin-save" >
         <h1 class="h1-auth">Crie sua conta</h1>
-        <p class="" style="opacity: 0;" >O usuário deve ter ao menos 4 caracteres.</p>
-        <input required type="text" name="user" id="user" placeholder="Usuário"  class= "input-auth <%= erro ? " input-erro" : "input-auth" %>"  >
-        <input required class="input-auth" type="password" name="password" id="password" placeholder="Senha">
+        <p  style="opacity: 0;" class="<%= erroU ? "aviso" : "p-auth" %>" >O usuário deve ter ao menos 4 caractéres.</p>
+        <p  style="opacity: 0;" class="<%= erroP ? "aviso" : "p-auth" %>">Sua senha deve ter ao menos 8 caractéres.</p>
+        <p  style="opacity: 0;" class="<%= alreadyExists ? "aviso" : "p-auth" %>">Este nome de usuário já existe.</p>
+        <input required type="text" name="user" id="user" placeholder="Usuário" class= "input-auth" >
+        <input required  type="password" name="password" id="password" placeholder="Senha"  class= "input-auth">
         <button id="submit" class="button">Criar</button>
         <p class="label">ou</p>
         <a class="a" href="/login">faça Login</a>
    </form>
    <%- include("../partials/footer.ejs")%>
-   <script src="/scripts/auth.js"></script>
+   <!-- <script src="/scripts/auth.js"></script> -->
 </body>
 </html>

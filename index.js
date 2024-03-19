@@ -34,57 +34,13 @@ app.get("/", (req, res) =>{
     res.render("./auth/project-enigmatic");
 })
 app.get("/login", (req, res)=>{
-    res.render("./auth/login");
-})
-app.get("/signin", (req, res)=>{
     var erro = false;
-    res.render("./auth/signin", {erro});   
+    res.render("./auth/login", {erro});
 })
-
-
-app.post("/signin-save", (req, res)=>{
-    var usuario = req.body.user;
-    var senha = req.body.password;
-    var erro= true;
-    
-
-    if(usuario.length < 4){
-        erro = true
-        res.render("./auth/signin", {erro})
-        console.log("nome pequeno")
-    }
-    else{
-        erro = false
-        console.log("nome aceito")
-        res.render("./auth/signin-confirmed")
-    }
-
-
-    
-        // Users.findOne({
-        //     where: {user: usuario}
-        // }).then((dadoRetornado)=>{
-        //     if(dadoRetornado){
-        //         res.send("usuário já existe");
-        //     }
-        //     else{
-        //         Users.create({
-        //             user: usuario,
-        //             password: senha,
-        //             checkpoint: 1,
-        //         }).then(()=>{res.send("Usuário Criado")})
-        //         .catch();
-        //     }
-        // })  
-        // .catch() 
-    
-
-  
-})
-
 app.post("/login-save", (req, res)=>{
     var usuario = req.body.userLogin;
     var senha = req.body.passwordLogin;
+    var erro = false;
 
     Users.findOne({
 
@@ -99,17 +55,71 @@ app.post("/login-save", (req, res)=>{
             app.locals.user = dadoRetornado.id;
             var checkPoint = dadoRetornado.checkpoint;
 
-            res.redirect(`/project-enigmatic/${app.locals.user}/${checkPoint}`)
-        
-            
+            res.redirect(`/project-enigmatic/${app.locals.user}/${checkPoint}`)    
         }
         else{
-            res.send("Usuário não erncontrado!")
+            erro = true
+            res.render("./auth/login", {erro})
         }
     })
     .catch();
     
 })
+app.get("/signin", (req, res)=>{
+    var erroP = false;
+    var erroU = false;
+    var alreadyExists = false;
+    res.render("./auth/signin", {erroP, erroU, alreadyExists});   
+})
+app.post("/signin-save", (req, res)=>{
+    var usuario = req.body.user;
+    var senha = req.body.password;
+    var erroP = false;
+    var erroU = false;
+    var alreadyExists = false;
+
+    if(usuario.length < 4){
+        erroU = true
+        res.render("./auth/signin", {erroP, erroU, alreadyExists})   
+    }
+    else{
+        if(senha.length < 8){
+            erroP = true
+            res.render("./auth/signin", {erroP, erroU, alreadyExists})
+        }
+        else{
+             Users.findOne({
+                where: {user: usuario}
+                })
+                .then((dadoRetornado)=>{
+                    
+                    if(dadoRetornado && dadoRetornado.user === usuario){
+                        alreadyExists = true;
+                        res.render("./auth/signin", {erroP, erroU, alreadyExists});
+                    }
+                else{
+                    Users.create({
+                        user: usuario,
+                        password: senha,
+                        checkpoint: 1,
+                    })
+                    .then(()=>{res.render("./auth/signin-confirmed")})
+                    .catch();
+                    }
+                })  
+                .catch()  
+        }       
+    }
+
+
+    
+       
+    
+
+  
+})
+
+
 app.get("/project-enigmatic/:user/?:checkpoint", (req, res)=>{
     const checkPoint = req.params.checkpoint
     const user = req.params.user
