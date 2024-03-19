@@ -21,8 +21,8 @@
     
    <form id="form" class="container-main" method="POST" action="/signin-save" >
         <h1 class="h1-auth">Crie sua conta</h1>
-        <p style="opacity: 0;" >O usuário deve ter ao menos 4 caracteres.</p>
-        <input required  class="<%= erro ? "input-auth input-erro" : "input-auth" %>"  type="text" name="user" id="user" placeholder="Usuário">
+        <p class="" style="opacity: 0;" >O usuário deve ter ao menos 4 caracteres.</p>
+        <input required type="text" name="user" id="user" placeholder="Usuário"  class= "input-auth <%= erro ? " input-erro" : "input-auth" %>"  >
         <input required class="input-auth" type="password" name="password" id="password" placeholder="Senha">
         <button id="submit" class="button">Criar</button>
         <p class="label">ou</p>

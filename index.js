@@ -37,14 +37,16 @@ app.get("/login", (req, res)=>{
     res.render("./auth/login");
 })
 app.get("/signin", (req, res)=>{
-    res.render("./auth/signin");   
+    var erro = false;
+    res.render("./auth/signin", {erro});   
 })
 
 
 app.post("/signin-save", (req, res)=>{
     var usuario = req.body.user;
     var senha = req.body.password;
-    var erro = false;
+    var erro= true;
+    
 
     if(usuario.length < 4){
         erro = true
@@ -52,6 +54,7 @@ app.post("/signin-save", (req, res)=>{
         console.log("nome pequeno")
     }
     else{
+        erro = false
         console.log("nome aceito")
         res.render("./auth/login", {erro})
     }

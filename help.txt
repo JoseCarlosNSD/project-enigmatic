@@ -28,6 +28,7 @@ CSS
     color: red;
 }
 
+git add -A;git commit * -m "=>";git push
 
 <!-- <%= erroNomeUsuario ? 'invalid' : '' %>" -->
 
