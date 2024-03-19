@@ -1,0 +1,31 @@
+Para alterar a cor do texto de um campo de entrada (input) no seu aplicativo Express usando EJS e CSS, você pode seguir estas etapas:
+
+Defina a regra de validação no servidor:
+No seu código Express, verifique se o nome de usuário tem mais de 4 caracteres. Se não atender a essa condição, você pode definir uma variável de erro para indicar que o nome de usuário é inválido.
+Renderize a página EJS com base na validação:
+No seu roteador Express, renderize a página EJS com a variável de erro (se houver). Por exemplo:
+JavaScript
+
+// Rota para a página de cadastro
+app.get('/cadastro', (req, res) => {
+    const erroNomeUsuario = req.query.erroNomeUsuario; // Verifique se há erro no nome de usuário
+    res.render('cadastro', { erroNomeUsuario });
+});
+AI-generated code. Review and use carefully. More info on FAQ.
+No seu arquivo EJS (cadastro.ejs), adicione o campo de entrada (input) com a cor apropriada:
+Use a variável erroNomeUsuario para determinar se o nome de usuário é inválido.
+Se for inválido, adicione a classe CSS que define a cor vermelha ao campo de entrada.
+Exemplo:
+HTML
+
+<input type="text" name="username" class="<%= erroNomeUsuario ? 'invalid' : '' %>" placeholder="Nome de usuário">
+AI-generated code. Review and use carefully. More info on FAQ.
+Estilize o campo de entrada (input) com CSS:
+No seu arquivo CSS, defina a classe .invalid para alterar a cor do texto para vermelho:
+CSS
+
+.invalid {
+    color: red;
+}
+AI-generated code. Review and use carefully. More info on FAQ.
+Dessa forma, quando o nome de usuário for inválido, o campo de entrada será exibido em vermelho, indicando um possível erro para o usuário. Lembre-se de adaptar essas etapas ao seu código específico e à estrutura do seu aplicativo Express. Espero que isso ajude! 🚀
