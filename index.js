@@ -56,7 +56,7 @@ app.post("/signin-save", (req, res)=>{
     else{
         erro = false
         console.log("nome aceito")
-        res.render("./auth/login", {erro})
+        res.render("./auth/signin-confirmed")
     }
 
 
