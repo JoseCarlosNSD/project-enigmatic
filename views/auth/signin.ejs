@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Conta - Project Enigmatic</title>
@@ -10,15 +9,11 @@
     <link rel="stylesheet" href="css/auth.css">
     <link rel="stylesheet" href="css/inputs.css">
     <%- include("../partials/bootstrap.ejs")%>
-    
-    
 </head>
 <body class="container">  
     <a  href="/"><button class="voltar"><i class="bi bi-house-door-fill icon"></i></button></a>
-
     <div class="container-video"></div>
     <div class="fade"></div>
-    
    <form id="form" class="container-main" method="POST" action="/signin-save" >
         <h1 class="h1-auth">Crie sua conta</h1>
         <p  style="opacity: 0;" class="<%= erroU ? "aviso" : "p-auth" %>" >O usuário deve ter ao menos 4 caractéres.</p>
