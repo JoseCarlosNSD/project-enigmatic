@@ -7,6 +7,6 @@ const userDB = connection.define("userDB",{
     checkpoint:{type: Sequielize.INTEGER, allowNull: false}
 });
 //Sicronizar o codigo com o banco. E o force diz q ele não ira forcçar caso a tabela já existe. 
-userDB.sync({force: false}).then(()=>{console.log("Banco de usuarios sincronizado!!!!!!")}).catch();
+userDB.sync({force: false}).then(()=>{console.log("Tabela de usuarios criada/atualizada")}).catch();
 
 module.exports = userDB;

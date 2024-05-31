@@ -6,6 +6,6 @@ const EnigmaticDB = connection.define("enigmatic_db",{
     answers:{type: Sequielize.STRING, allowNull: false},
 });
 //Sicronizar o codigo com o banco. E o force diz q ele não ira forcçar caso a tabela já existe. 
-EnigmaticDB.sync({force: false}).then(()=>{console.log("Banco de dados sincronizado!!!!!!")}).catch();
+EnigmaticDB.sync({force: false}).then(()=>{console.log("Tabela de perguntas criada/atualizada")}).catch();
 
 module.exports = EnigmaticDB;
