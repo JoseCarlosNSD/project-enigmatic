@@ -4,7 +4,8 @@
   "description": "Projeto de resolução de enigmas.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon index",
+    "seed": "sequelize-cli db:seed:all"
   },
   "author": "",
   "license": "ISC",
@@ -18,5 +19,8 @@
     "mysql2": "^3.9.2",
     "nodemon": "^3.1.0",
     "sequelize": "^6.37.1"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.6.2"
   }
 }

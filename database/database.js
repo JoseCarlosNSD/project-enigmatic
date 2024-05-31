@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
 const connection = new Sequelize('enigma', 'root', 'root', {
-  host: 'localhost',
+  host: '172.17.0.5',
   dialect: 'mysql'
 });
 

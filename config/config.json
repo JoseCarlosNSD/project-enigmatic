@@ -3,21 +3,21 @@
     "username": "root",
     "password": "root",
     "database": "enigma",
-    "host": "127.0.0.1",
+    "host": "172.17.0.5",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": "root",
     "database": "enigma",
-    "host": "127.0.0.1",
+    "host": "172.17.0.5",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": "root",
     "database": "enigma",
-    "host": "127.0.0.1",
+    "host": "172.17.0.5",
     "dialect": "mysql"
   }
 }
