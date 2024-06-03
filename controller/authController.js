@@ -7,14 +7,15 @@ exports.loginSave = async (req, res) => {
     let erro = false;
 
     try {
-        const user = await authService.loginUser(usuario, senha);
-        if (user) {
+        const { success, user, message } = await authService.loginUser(usuario, senha);
+        
+        if (success && user) {
             req.app.locals.user = user.id;
             const checkPoint = user.checkpoint;
             res.redirect(`/project-enigmatic/${req.app.locals.user}/${checkPoint}`);
         } else {
             erro = true;
-            res.render("./auth/login", { erro });
+            res.render("./auth/login", { erro, message });
         }
     } catch (err) {
         console.log(err);

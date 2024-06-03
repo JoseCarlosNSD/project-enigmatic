@@ -2,9 +2,22 @@
 const userRepository = require("../repository/userRepository");
 
 exports.loginUser = async (username, password) => {
+    const bcrypt = require('bcryptjs');
     try {
         const user = await userRepository.findUserByUsername(username);
-        return user;
+
+        if (!user) {
+            return { success: false, message: 'Invalid username or password' };
+        }
+
+        const userPlain = user.get({ plain: true });
+        const isPasswordValid = await bcrypt.compare(password, userPlain.password);
+
+        if (!isPasswordValid) {
+            return { success: false, message: 'Invalid username or password' };
+        }
+
+        return { success: true, user: userPlain };
     } catch (err) {
         throw new Error(err);
     }

@@ -10,7 +10,6 @@ const rotas = require("./rotas");  // Importa o arquivo de rotas
 app.use(express.static('public'));
 
 connection.authenticate().then(() => {
-    console.log("Banco de dados conectado!");
 })
 .catch((erro) => {
     console.log(erro);

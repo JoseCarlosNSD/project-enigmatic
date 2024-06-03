@@ -10,10 +10,13 @@ exports.findUserByUsername = async (username) => {
 };
 
 exports.createUser = async (username, password) => {
+    const bcrypt = require('bcryptjs');
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
     try {
         await Users.create({
             user: username,
-            password: password,
+            password: hashedPassword,
             checkpoint: 1,
         });
 
